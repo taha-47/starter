@@ -19,14 +19,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/contact', function () {
-    return view('contact');
-});
-
-Route::get('admin','FirstController@index');
-
-Route::resource('news', 'NewsController');
-
-Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->name('home')-> middleware('verified');
+
+Route::get('/redirect/{service}', 'SocialeController@redirect');
+Route::get('/callback/{service}', 'SocialeController@callback');
+
+Route::get('/students','StudentsController@getStudents');
+
+Route::group(['prefix' => 'categories'], function () {
+    Route::get('/','CategoriesController@index');
+    Route::get('create','CategoriesController@create');
+    Route::post('store','CategoriesController@store');
+});
