@@ -11,7 +11,8 @@ class CategoriesController extends Controller
     
     public function index()
     {
-        return view('categories.show');
+      $cats = Categories::select('id', 'name', 'description')->get();
+      return view('categories.show')->with('cats', $cats);
     }
 
    
@@ -49,18 +50,38 @@ class CategoriesController extends Controller
   
     public function edit($id)
     {
-        //
+      $cats = Categories::find($id);
+      if($cats){
+        return view('categories.edit')->with('cats', $cats);
+      }else{
+        return redirect('/categories');
+      }
+     
     }
 
 
     public function update(Request $request, $id)
     {
-        //
-    }
+        $validation = validator::make($request->all(),[
+          'name' => 'required|unique:categories|max:100',
+          'description' => 'required'
+        ]);
 
- 
+        if($validation->fails()){
+
+          return $validation->errors();
+          
+        }else{
+
+          $cats = Categories::find($id);
+          $cats->name = $request->get('name');
+          $cats->description = $request->get('description');
+          $cats->save();
+          return redirect('/categories')->with('success', 'Category updated successfully');
+        }
+    }
     public function destroy($id)
     {
-        //
+      return 'you are in the delete section ' .$id;
     }
 }

@@ -31,4 +31,7 @@ Route::group(['prefix' => 'categories'], function () {
     Route::get('/','CategoriesController@index');
     Route::get('create','CategoriesController@create');
     Route::post('store','CategoriesController@store');
+    Route::get('edit/{id}','CategoriesController@edit');
+    Route::post('update/{id}','CategoriesController@update');
+    Route::get('delete/{id}','CategoriesController@destroy');
 });
