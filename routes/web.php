@@ -27,6 +27,7 @@ Route::get('/callback/{service}', 'SocialeController@callback');
 
 Route::get('/students','StudentsController@getStudents');
 
+/* Categories routs */
 Route::group(['prefix' => 'categories'], function () {
     Route::get('/','CategoriesController@index');
     Route::get('create','CategoriesController@create');

@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel = "stylesheet" href= "{{ URL::asset('css/app.css')}}">
-  <title>create</title>
-</head>
-<body>
+@extends('layouts.app')
+@section('content')
   <div class="container">
     <h2 class="text-center">Edit category</h2>
     @if (Session::has('success'))
@@ -29,5 +21,4 @@
       <button type="submit" class="btn btn-primary">Update</button>
     </form>
   </div>
-</body>
-</html>
+@stop

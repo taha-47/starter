@@ -82,6 +82,13 @@ class CategoriesController extends Controller
     }
     public function destroy($id)
     {
-      return 'you are in the delete section ' .$id;
+      $cats = Categories::find($id);
+
+      if($cats){
+        $cats->delete();
+        return redirect()->back()->with(['success' => 'Category deleted seccussfully']);
+      }else{
+        return redirect()->back()->with(['error' => 'There is no such category with this id']);
+      }
     }
 }

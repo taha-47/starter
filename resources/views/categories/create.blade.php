@@ -1,13 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel = "stylesheet" href= "{{ URL::asset('css/app.css')}}">
-  <title>create</title>
-</head>
-<body>
+{{--
+  
+  * Category page create
+  *
+  *
+
+--}}
+
+@extends('layouts.app')
+
+@section('content')
+    
   <div class="container">
     <h2 class="text-center">Create category</h2>
     @if (Session::has('success'))
@@ -21,7 +23,6 @@
       <div class="form-group">
         <label for="exampleInputEmail1">Category name</label>
         <input type="text" class="form-control" name="name">
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
       </div>
       <div class="form-group">
         <label for="exampleInputEmail1">Category description</label>
@@ -30,5 +31,4 @@
       <button type="submit" class="btn btn-primary">Save</button>
     </form>
   </div>
-</body>
-</html>
+@stop

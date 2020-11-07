@@ -1,16 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel = "stylesheet" href= "{{ URL::asset('css/app.css')}}">
-  <title>Categories</title>
-</head>
-<body>
+
+@extends('layouts.app')
+@section('content')
 
   <div class="container">
     <h2 class="text-center">Categories</h2>
+    @if (Session::has('success'))
+    <div class="alert alert-success">
+      {{session::get('success')}}
+    </div>
+     @endif
+     @if (Session::has('error'))
+    <div class="alert alert-warning">
+      {{session::get('error')}}
+    </div>
+     @endif
+
     <a href="{{ URL('categories/create') }}" class="btn btn-info" >Add new category</a>
     <table class="table table-bordered">
       <thead class="thead-dark">
@@ -38,6 +42,12 @@
       </tbody>
     </table>
   </div>
-  
-</body>
-</html>
+@stop
+@section('script')
+    <script>
+      $(function(){
+       
+
+      });
+    </script>
+@endsection
