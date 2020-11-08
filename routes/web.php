@@ -21,6 +21,7 @@ Route::get('/', function () {
 
 
 Route::get('/home', 'HomeController@index')->name('home')-> middleware('verified');
+Auth::routes(['verify' => true]);
 
 Route::get('/redirect/{service}', 'SocialeController@redirect');
 Route::get('/callback/{service}', 'SocialeController@callback');
